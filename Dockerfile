@@ -8,10 +8,10 @@ WORKDIR /app
 # # 安装git、nano
 # RUN apk add git nano
 # COPY package.json ./
-COPY . .
+COPY . /app
 # RUN rm package-lock.json
-# RUN npm config set registry http://registry.npm.taobao.org/
-# RUN npm install
+RUN npm config set registry http://registry.npm.taobao.org/
+RUN npm install
 RUN chmod a+x start.sh
 EXPOSE 4000
 ENTRYPOINT ["./start.sh"]
